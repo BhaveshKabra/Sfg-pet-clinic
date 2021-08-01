@@ -1,6 +1,10 @@
 package org.bhavesh.model;
 
-public class Person {
+public class Person extends BaseEntity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7468616274294064708L;
 	private String firstName;
 	private String lastName;
 	public String getFirstName() {
