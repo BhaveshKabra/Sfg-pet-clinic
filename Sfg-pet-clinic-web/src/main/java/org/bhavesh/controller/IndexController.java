@@ -10,7 +10,7 @@ public class IndexController {
 	@RequestMapping({"/","","index","index.html"})
 	public String getIndex(Model model)
 	{
-		model.addAttribute("IndexH1","Index Page Thymeleaf");
+		//model.addAttribute("IndexH1","Index Page Thymeleaf");
 		return "index";
 	}
 }
