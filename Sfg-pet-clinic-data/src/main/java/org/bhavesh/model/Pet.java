@@ -2,10 +2,16 @@ package org.bhavesh.model;
 
 import java.time.LocalDate;
 
-public class Pet extends BaseEntity{
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Pet{
 	/**
 	 * 
 	 */
+	@Id
+	private Long id; 
 	private static final long serialVersionUID = -2303771160941510965L;
 	private PetType petType;
 	private Owner owner;
