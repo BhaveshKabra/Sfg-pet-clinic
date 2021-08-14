@@ -1,44 +1,51 @@
 package org.bhavesh.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
-public class Owner{
+public class Owner extends Person{
 
 	/**
 	 * 
 	 */
-	
-	@Id
-	private Long id; 
-	private static final long serialVersionUID = -5227491768596307832L;
-	private String firstName;
-	private String lastName;
-	public String getFirstName() {
-		return firstName;
+    private Set<Pet> pets=new HashSet<Pet>();
+    private String address;
+    private String city;
+    private String telephone;
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
+	public String getAddress() {
+		return address;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public String getCity() {
+		return city;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setCity(String city) {
+		this.city = city;
 	}
-	public Long getId() {
-		return id;
+
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	public Owner(Long id, String firstName, String lastName) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+
 	public Owner() {
 		super();
 		
