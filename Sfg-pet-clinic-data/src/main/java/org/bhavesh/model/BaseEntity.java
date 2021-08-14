@@ -7,7 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @MappedSuperclass
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 public class BaseEntity implements Serializable{
 
 	/**
@@ -16,14 +25,5 @@ public class BaseEntity implements Serializable{
 	private static final long serialVersionUID = -1684730891975785655L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+	private Long id;	
 }

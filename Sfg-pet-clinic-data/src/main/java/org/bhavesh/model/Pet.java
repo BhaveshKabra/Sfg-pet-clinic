@@ -1,54 +1,39 @@
 package org.bhavesh.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
 public class Pet extends BaseEntity{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2303771160941510965L;
 	private String name;
+	@ManyToOne()
+	@JoinColumn(name="pet_id")
 	private PetType petType;
+	@ManyToOne
+	@JoinColumn(name="owner_id")
 	private Owner owner;
 	private LocalDate dob;
-	public PetType getPetType() {
-		return petType;
-	}
-	public void setPetType(PetType petType) {
-		this.petType = petType;
-	} 
-	public Owner getOwner() {
-		return owner;
-	}
-	public void setOwner(Owner owner) {
-		this.owner = owner;
-	}
-	public LocalDate getDob() {
-		return dob;
-	}
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
-	}
 	
-	public Pet(String name, PetType petType, Owner owner, LocalDate dob) {
-		super();
-		this.name = name;
-		this.petType = petType;
-		this.owner = owner;
-		this.dob = dob;
-	}
-	public Pet() {
-		super();
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
+	private Set<Visit> visitSet=new HashSet<Visit>();
 }

@@ -1,10 +1,10 @@
 package org.bhavesh.repository;
 
-import org.bhavesh.model.Pet;
+import org.bhavesh.model.Visit;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PetRepository extends CrudRepository<Pet, Long> {
-	public Pet findByName(String name);
+public interface VisitRepository extends CrudRepository<Visit, Long>{
+
 }

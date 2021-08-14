@@ -1,4 +1,4 @@
-package org.bhavesh.bootstrap;
+	package org.bhavesh.bootstrap;
 
 import java.time.LocalDate;
 
@@ -7,11 +7,12 @@ import org.bhavesh.model.Pet;
 import org.bhavesh.model.PetType;
 import org.bhavesh.model.Speciality;
 import org.bhavesh.model.Vet;
+import org.bhavesh.model.Visit;
 import org.bhavesh.service.OwnerService;
-import org.bhavesh.service.PetService;
 import org.bhavesh.service.PetTypeService;
 import org.bhavesh.service.SpecialityService;
 import org.bhavesh.service.VetService;
+import org.bhavesh.service.VisitService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,18 +20,24 @@ import org.springframework.stereotype.Component;
 public class Bootloader implements CommandLineRunner {
 
 	private final OwnerService ownerService;
-	private final PetService petService;
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
-	public Bootloader(OwnerService ownerService, PetService petService, VetService vetService,PetTypeService petTypeService,SpecialityService specialityService) {
+	private final VisitService visitService;
+	
+	
+
+	public Bootloader(OwnerService ownerService,VetService vetService,
+			PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
 		super();
 		this.ownerService = ownerService;
-		this.petService = petService;
 		this.vetService = vetService;
-		this.petTypeService=petTypeService;
-		this.specialityService=specialityService;
+		this.petTypeService = petTypeService;
+		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
+
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -77,6 +84,14 @@ public class Bootloader implements CommandLineRunner {
 		
 		owner2.getPets().add(pet2);
 		ownerService.save(owner2);
+		
+		Visit catVisit = new Visit();
+        catVisit.setPet(pet2);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+
+        visitService.save(catVisit);
+        
 		
 		Speciality radiology=new Speciality();
 		radiology.setDescription("Radiology");

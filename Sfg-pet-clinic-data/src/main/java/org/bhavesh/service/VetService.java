@@ -2,14 +2,12 @@ package org.bhavesh.service;
 
 import java.util.Set;
 
-import org.bhavesh.model.Owner;
 import org.bhavesh.model.Vet;
-import org.springframework.stereotype.Service;
 
-@Service
-public interface VetService {
-	Owner findByid(Long id);
-	Owner save(Vet vet);
-	Set<Vet> findAll();
-	Vet findByLastName(String lastName);
+public interface VetService extends CrudService<Vet, Long> {
+
+	public Vet findById(Long id);
+	public Vet save(Vet vet);
+	public Set<Vet> findAll();
+	public Vet findByLastName(String lastName);
 }
