@@ -32,7 +32,7 @@ tmp/**/*
 *~.nib
 local.properties
 .classpath
-.settings/
+.settings/**
 .loadpath
 .factorypath
 /src/main/resources/rebel.xml
@@ -67,6 +67,7 @@ local.properties
 ######################
 # Maven
 ######################
+/.mvn/**
 /log/
 /target/
 */target/**
